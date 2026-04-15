@@ -12,9 +12,8 @@ const RecipeSidebar = () => (
     <div className="p-4 border-b border-slate-800/50 shrink-0 bg-slate-950/80">
       <h2 className="text-[12px] font-black text-indigo-400 uppercase tracking-[0.15em] flex items-center gap-2.5">
         <Code2 className="w-4 h-4" aria-hidden="true" />
-        מתכון הפרומפט ב-IDE
+        מתכון הפרומפט
       </h2>
-      <p className="text-[10px] text-slate-500 mt-1.5">Copilot · Claude Code · Cursor</p>
     </div>
 
     {/* Steps List */}
