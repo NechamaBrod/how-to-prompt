@@ -10,7 +10,7 @@ const Header = () => (
         <h1 className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-l from-blue-400 via-indigo-400 to-violet-500 tracking-tight leading-none">
           ללמוד לשאול נכון
         </h1>
-        <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-1.5">
+        <p dir="ltr" className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-1.5">
           Mastering AI Communication in Your IDE
         </p>
       </div>

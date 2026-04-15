@@ -10,13 +10,13 @@ const LazySection = ({ lazy }) => (
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/40">
           <p className="text-[10px] font-bold text-slate-500 uppercase mb-1.5">הפרומפט (דל):</p>
-          <p className="text-[13px] text-slate-400 italic line-clamp-3 leading-relaxed">
+          <p className="text-[13px] text-slate-400 italic line-clamp-3 leading-relaxed" dir="auto">
             "{lazy.prompt}"
           </p>
         </div>
         <div className="bg-slate-900/70 p-3.5 rounded-xl border border-slate-800/30">
           <p className="text-[10px] font-bold text-slate-500 uppercase mb-1.5">התשובה שתקבלי:</p>
-          <p className="text-[13px] text-slate-400 italic line-clamp-3 leading-relaxed">
+          <p className="text-[13px] text-slate-400 italic line-clamp-3 leading-relaxed" dir="auto">
             {lazy.response}
           </p>
         </div>
@@ -46,7 +46,7 @@ const GoodSection = ({ good }) => (
           <p className="text-[11px] font-bold text-indigo-400/90 mb-2.5 uppercase tracking-wider px-1">
             הפרומפט ב-Copilot / Claude Code:
           </p>
-          <div className="flex-1 bg-slate-950/90 p-5 rounded-2xl border border-indigo-900/40 text-blue-50 text-[13px] leading-[1.8] font-medium shadow-2xl overflow-y-auto custom-scrollbar whitespace-pre-wrap">
+          <div className="flex-1 bg-slate-950/90 p-5 rounded-2xl border border-indigo-900/40 text-blue-50 text-[13px] leading-[1.8] font-medium shadow-2xl overflow-y-auto custom-scrollbar whitespace-pre-wrap bidi-plaintext">
             "{good.prompt}"
           </div>
         </div>
@@ -56,7 +56,7 @@ const GoodSection = ({ good }) => (
           <p className="text-[11px] font-bold text-slate-400 mb-2.5 uppercase px-1">
             התשובה המנצחת שתקבלי:
           </p>
-          <div className="flex-1 bg-indigo-950/25 p-5 rounded-2xl border border-indigo-800/25 text-slate-200 text-[15px] leading-[1.8] overflow-y-auto custom-scrollbar backdrop-blur-sm">
+          <div className="flex-1 bg-indigo-950/25 p-5 rounded-2xl border border-indigo-800/25 text-slate-200 text-[15px] leading-[1.8] overflow-y-auto custom-scrollbar backdrop-blur-sm" dir="auto">
             {good.response}
           </div>
         </div>
@@ -66,7 +66,7 @@ const GoodSection = ({ good }) => (
       <div className="mt-1 pt-3.5 border-t border-indigo-500/15 flex items-center justify-center gap-3 shrink-0">
         <div className="flex items-center gap-2.5 bg-emerald-500/10 px-5 py-2 rounded-full border border-emerald-500/20">
           <Zap className="w-4 h-4 text-emerald-400 shrink-0" aria-hidden="true" />
-          <p className="text-[12px] font-black tracking-wide text-emerald-400">{good.benefit}</p>
+          <p className="text-[12px] font-black tracking-wide text-emerald-400" dir="auto">{good.benefit}</p>
         </div>
       </div>
     </div>

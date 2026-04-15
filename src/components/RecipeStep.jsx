@@ -41,9 +41,9 @@ const RecipeStep = ({ step, index }) => {
             {step.highlights.map((part, i) => {
               if (part.isCode) {
                 return (
-                  <span key={i} className={`${step.highlightColor} font-mono`}>
+                  <code key={i} dir="ltr" className={`${step.highlightColor} font-mono bidi-isolate`}>
                     {part.text}
-                  </span>
+                  </code>
                 );
               }
               if (part.isHighlight) {

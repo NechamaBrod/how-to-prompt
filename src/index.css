@@ -105,6 +105,15 @@ body {
   background: linear-gradient(to bottom, #3b82f6, #6366f1);
 }
 
+/* ===== BiDi (RTL/LTR) Support ===== */
+.bidi-plaintext {
+  unicode-bidi: plaintext;
+}
+
+.bidi-isolate {
+  unicode-bidi: isolate;
+}
+
 /* ===== Hover Lift Effect ===== */
 .hover-lift {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
