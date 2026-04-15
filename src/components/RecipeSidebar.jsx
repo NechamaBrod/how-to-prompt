@@ -18,7 +18,7 @@ const RecipeSidebar = () => (
     </div>
 
     {/* Steps List */}
-    <div className="flex-1 overflow-y-auto p-5 pt-7 flex flex-col gap-5 overflow-x-visible">
+    <div className="flex-1 overflow-y-auto p-5 pt-7 flex flex-col gap-5 overflow-x-visible custom-scrollbar">
       {recipeSteps.map((step, i) => (
         <RecipeStep key={step.iconName} step={step} index={i + 1} />
       ))}
