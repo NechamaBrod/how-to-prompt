@@ -10,9 +10,9 @@ export const scenarios = {
       drawback: "הודעת שגיאה בלבד גורמת ל-AI לנחש. הוא לא יודע מאיפה הנתון מגיע."
     },
     good: {
-      prompt: "סמנתי את השורה שקורסת — @workspace למה name יכול להיות null כאן? תעקבי מאיפה הוא מגיע בפרויקט",
+      prompt: "סמנתי את השורה שקורסת. הנה ה-Stack Trace מהטרמינל:\n\njava.lang.NullPointerException: Cannot invoke \"String.length()\"\n  at UserService.validate(UserService.java:42)\n  at MainApp.run(MainApp.java:18)\n\n@workspace — למה name יכול להיות null בשורה 42? תעקבי מאיפה הוא מגיע בפרויקט ותראי לי את כל השרשרת",
       response: "Copilot יסרוק את כל הפרויקט, יראה את כל המקומות ש-name מקבל ערך ויצביע על הנקודה שבה הוא לא אותחל.",
-      benefit: "AI שרואה את כל הפרויקט → אבחון מדויק פי כמה."
+      benefit: "Stack Trace + @workspace = אבחון מדויק פי כמה."
     }
   },
   java_spring: {
@@ -23,9 +23,9 @@ export const scenarios = {
       drawback: "היא תתחיל לשים אנוטציות בכל מקום בלי להבין איזו מחלקה באמת חסרה."
     },
     good: {
-      prompt: "@workspace יש לי שגיאת 'Unsatisfied dependency' ב-UserController. תסרקי את הפרויקט ותבדקי אם UserService מוגדרת נכון כ-Spring Bean",
+      prompt: "הנה הלוג האדום שקפץ בקונסול כשהרצתי את השרת:\n\nError creating bean 'userController': Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.app.service.UserService'\n\n@workspace תסרקי את הפרויקט — UserService קיימת בקובץ UserService.java אבל Spring לא מזהה אותה. מה חסר?",
       response: "Copilot יסרוק את כל המחלקות, ימצא ש-UserService חסרת @Service ויסביר למה Spring לא מזהה אותה.",
-      benefit: "AI שרואה את כל המחלקות בפרויקט = אבחון תוך שניות."
+      benefit: "לוג מלא + שם הקובץ = אבחון תוך שניות."
     }
   },
   python_env: {
@@ -36,9 +36,9 @@ export const scenarios = {
       drawback: "זה לא יעזור אם היא בתוך Virtual Env ב-VS Code והטרמינל בחוץ."
     },
     good: {
-      prompt: "ב-VS Code מופיע 'No module named requests'. @workspace תבדקי איזה Python interpreter פעיל ובאיזו סביבה הותקנה הספרייה",
+      prompt: "ב-VS Code מופיע קו אדום מתחת ל-import requests, וכשאני מריצה מהטרמינל:\n\nModuleNotFoundError: No module named 'requests'\n\nכבר עשיתי pip install requests והוא אמר שזה מותקן.\nה-interpreter שנבחר למטה ב-VS Code הוא Python 3.11.4.\n@workspace — תבדקי למה זה לא מוצא את הספרייה. אולי venv לא מסונכרן עם ה-interpreter?",
       response: "Copilot יזהה את הסביבה הפעילה, יבין שיש קונפליקט בין ה-interpreter לvenv ויסביר איך לתקן ב-2 לחיצות.",
-      benefit: "פתרון בעיות סביבה בלי לאבד שעה בגוגל."
+      benefit: "פירוט מה כבר ניסית = AI לא חוזר על עצות שלא עבדו."
     }
   },
   cors: {
@@ -49,9 +49,9 @@ export const scenarios = {
       drawback: "פתרון 'טכני' שלא מסביר למה זה קורה ואיך לעשות את זה בטוח."
     },
     good: {
-      prompt: "@workspace הדפדפן חוסם CORS מ-localhost:3000 לשרת שלי. תראי לי את הגדרות השרת הנוכחיות ותוסיפי את ה-middleware הנכון",
+      prompt: "מקבלת את השגיאה הזו ב-DevTools Console:\n\nAccess to fetch at 'http://localhost:5000/api/users' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header\n\nה-Frontend רץ על 3000, השרת על 5000.\n@workspace — תראי לי את הגדרות השרת הנוכחיות ותוסיפי CORS middleware שיעבוד רק מהדומיין שלי ולא '*'",
       response: "Copilot יקרא את קוד השרת, יראה שחסר הגדרת CORS ויוסיף את הקוד המדויק המותאם לפרויקט שלך.",
-      benefit: "פתרון בהקשר מלא של הפרויקט — לא עצה גנרית."
+      benefit: "הודעת שגיאה מלאה מ-DevTools = פתרון מדויק וגם מאובטח."
     }
   },
   java_maven: {
@@ -62,9 +62,9 @@ export const scenarios = {
       drawback: "תשובה קרה שלא עוזרת לג'וניורית להבין איפה הקובץ שצריך לערוך."
     },
     good: {
-      prompt: "@workspace יש קו אדום ב-pom.xml על 'org.json:json:jar:20230227'. תסבירי למה ותציעי את הגרסה הנכונה",
+      prompt: "יש קו אדום ב-pom.xml בשורה הזו:\n\n<dependency>\n  <groupId>org.json</groupId>\n  <artifactId>json</artifactId>\n  <version>20230227</version>\n</dependency>\n\nהשגיאה: Could not resolve dependencies.\n@workspace — תבדקי מה הגרסה הנכונה שקיימת ב-Maven Central ותתקני לי את ה-pom.xml",
       response: "Copilot יזהה שהגרסה לא קיימת ב-Maven Central, יציע גרסה תקינה ויסביר איך לבצע Reload.",
-      benefit: "עריכת config files עם מישהו שמבין Maven."
+      benefit: "העתקת הקוד הבעייתי + השגיאה = תיקון כירורגי."
     }
   },
   react_loop: {
@@ -75,9 +75,9 @@ export const scenarios = {
       drawback: "היא תשים [] בכל מקום ותקבל באגים של מידע שלא מתעדכן."
     },
     good: {
-      prompt: "סמנתי את ה-useEffect שגורם לשגיאת 'Too many re-renders'. @workspace תסבירי למה זה קורה ותציעי תיקון",
+      prompt: "הדפדפן נתקע ואני מקבלת בקונסול:\nToo many re-renders. React limits the number of renders to prevent an infinite loop.\n\nסמנתי את הקומפוננטה — זה ה-useEffect שלי:\n\nuseEffect(() => {\n  setItems(fetchData());\n});\n\n@workspace — למה זה גורם ללופ אינסופי? איך מתקנים בלי לשבור את העדכון?",
       response: "Copilot יראה את ה-useEffect המסומן, יזהה שה-state מתעדכן בפנים בלי תנאי ויסביר כיצד לתקן עם dependency array נכון.",
-      benefit: "הבנת React Lifecycle עם הקוד שלך לנגד עיניים."
+      benefit: "הקוד הבעייתי מודבק → AI רואה בדיוק את הבעיה."
     }
   },
   node_auth: {
@@ -88,9 +88,9 @@ export const scenarios = {
       drawback: "היא לא תדע איך 'להדביק' את הטוקן בצורה שהשרת מצפה לה."
     },
     good: {
-      prompt: "@workspace תבדקי את ה-auth middleware שלי — למה הוא מחזיר 401 גם כשיש Token תקין בבקשה?",
+      prompt: "אני שולחת בקשה מ-Postman ומקבלת 401.\nהנה ה-Headers שאני שולחת:\nAuthorization: Bearer eyJhbGciOiJIUzI1...\n\nוהנה התשובה מהשרת:\n{ \"error\": \"jwt malformed\" }\n\n@workspace — תבדקי את ה-auth middleware שלי. אני כן שולחת Token, אז למה הוא לא מתקבל?",
       response: "Copilot יקרא את ה-middleware, ימצא שהוא מחפש 'Bearer token' אבל הקוד לא מפצל נכון — ויתקן.",
-      benefit: "דיבאג auth flow עם ראייה של כל הקוד."
+      benefit: "Headers + תשובת שרת מודבקים = AI מבין את שני הצדדים."
     }
   },
   git_conflict: {
@@ -101,9 +101,9 @@ export const scenarios = {
       drawback: "מפחיד. היא עלולה למחוק קוד חשוב בלי להבין מה היא עושה."
     },
     good: {
-      prompt: "יש לי merge conflict ב-App.js. @workspace תסבירי מה ההבדל בין 'Current Change' ל-'Incoming Change' ואיזו גרסה עדיפה לשמור",
-      response: "Copilot יקרא את שני הצדדים, יסביר מה כל גרסה עושה ויעזור לבחור — או למזג — בחכמה.",
-      benefit: "פתרון קונפליקטים מבוסס הבנה, לא ניחוש."
+      prompt: "אחרי git merge נוצר conflict ב-App.js. הנה מה שאני רואה בקובץ:\n\n<<<<<<< HEAD\n<Header title=\"Dashboard\" />\n=======\n<Header title=\"לוח בקרה\" showLogo={true} />\n>>>>>>> feature/hebrew\n\nאני רוצה גם את הלוגו וגם את השם בעברית.\n@workspace — תעזרי לי למזג את שני הצדדים בצורה שמשלבת את שניהם",
+      response: "Copilot יקרא את שני הצדדים, יבין שאת רוצה את שני השינויים ויכתוב שורה ממוזגת שכוללת גם עברית וגם לוגו.",
+      benefit: "הדבקת הקונפליקט + מה שאת רוצה = מיזוג חכם."
     }
   },
   sql_slow: {
@@ -114,9 +114,9 @@ export const scenarios = {
       drawback: "היא תחשוב שאינדקס זה קסם ותשים אותו על כל הטבלה."
     },
     good: {
-      prompt: "@workspace הquery הזה על users.email לוקח 10 שניות. תסתכלי על ה-schema ותגידי מה חסר כדי לזרז אותו",
-      response: "Copilot יראה את מבנה הטבלה, יזהה שחסר INDEX על email ויכתוב את פקודת ה-SQL המדויקת ליצירתו.",
-      benefit: "אופטימיזציה מבוססת הקשר אמיתי של הפרויקט."
+      prompt: "ה-Query הזה לוקח 10 שניות:\nSELECT * FROM users WHERE email = 'test@test.com';\n\nהרצתי EXPLAIN ומצאתי:\nSeq Scan on users  (rows=50000)\n\nהנה ה-schema:\nCREATE TABLE users (id SERIAL, name VARCHAR, email VARCHAR, created_at TIMESTAMP);\n\n@workspace — מה חסר כאן כדי לזרז? ואיך אני מוודאת שזה לא יפגע ב-INSERT?",
+      response: "Copilot יראה את ה-EXPLAIN ואת ה-schema, יזהה שחסר INDEX על email ויכתוב את פקודת ה-SQL המדויקת עם הסבר על ה-tradeoff.",
+      benefit: "EXPLAIN + Schema מודבקים = אופטימיזציה מבוססת עובדות."
     }
   },
   next_client: {
@@ -127,9 +127,9 @@ export const scenarios = {
       drawback: "היא תהפוך את כל האתר שלה ל-Client Side ותאבד את היתרון של Next.js."
     },
     good: {
-      prompt: "סמנתי את הקומפוננטה שנותנת שגיאת useState. @workspace האם כל הקובץ צריך 'use client' או רק חלק ממנו? תציעי ארכיטקטורה נכונה",
-      response: "Copilot יראה את הקומפוננטה, יציע לחלץ רק את האינטראקטיבי לקובץ נפרד עם 'use client' — ויכתוב את זה.",
-      benefit: "ארכיטקטורת Next.js נכונה עם יד מכוונת."
+      prompt: "מקבלת שגיאה אדומה בדפדפן:\nError: useState only works in Client Components.\n\nהקובץ הוא app/dashboard/page.tsx — הוא Server Component שמושך data מ-DB אבל גם מציג טאבים אינטראקטיביים עם useState.\n\n@workspace — האם כל הקובץ צריך 'use client' או שעדיף לפצל? תציעי ארכיטקטורה שמשאירה את ה-data fetching בצד שרת",
+      response: "Copilot יראה את הקומפוננטה, יציע לחלץ רק את הטאבים לקובץ Client נפרד — ולהשאיר את ה-data fetching ב-Server.",
+      benefit: "הסבר מה הקובץ עושה → AI מציע ארכיטקטורה, לא תיקון עיוור."
     }
   },
   css_layout: {
@@ -140,9 +140,9 @@ export const scenarios = {
       drawback: "תשובה גנרית. לפעמים זה דווקא יהרוס לה את שאר העיצוב בדף."
     },
     good: {
-      prompt: "סמנתי את ה-div שהטקסט לא מרוכז בתוכו. @workspace תסתכלי על ה-CSS הקיים ותציעי תיקון שלא ישבור את שאר הדף",
-      response: "Copilot יראה את ה-CSS של הdiv וסביבתו, ויוסיף flexbox ממוקד שלא פוגע בשאר האלמנטים.",
-      benefit: "CSS מותאם לקוד הקיים — לא copy-paste מ-Stack Overflow."
+      prompt: "צילום מסך מצורף — הטקסט צמוד לשמאל למרות שהגדרתי מרכוז.\n\nהנה ה-CSS הנוכחי של הקונטיינר:\n.card { display: flex; width: 100%; }\n.card-text { margin: auto; }\n\nואבא שלו:\n.grid { display: grid; grid-template-columns: 1fr 1fr; }\n\n@workspace — למה ה-text-align לא עובד? תתקני בלי לשבור את ה-Grid של שאר הכרטיסיות",
+      response: "Copilot יראה את ה-CSS של הdiv וסביבתו, יזהה ש-flex דורס את ה-margin: auto ויציע תיקון ממוקד.",
+      benefit: "צילום מסך + CSS מודבק = תיקון שלא שובר כלום."
     }
   },
   mcp_basics: {
@@ -153,9 +153,9 @@ export const scenarios = {
       drawback: "זה נשמע כמו משימה בלתי אפשרית לג'וניורית."
     },
     good: {
-      prompt: "@workspace אני רוצה להוסיף Tool חדש ל-MCP server שלי שיחזיר רשימת קבצים בתיקייה. תסתכלי על הקוד הקיים ותכתבי Tool שמתאים לסגנון שלו",
+      prompt: "יש לי MCP server שעובד עם 2 Tools קיימים (ראי את index.ts).\nאני רוצה להוסיף Tool שלישי שמחזיר רשימת קבצים מתיקייה.\n\nהנה דוגמה ל-Tool קיים שעובד אצלי:\n\nserver.tool('get-user', { id: z.string() }, async ({ id }) => {\n  return { content: [{ type: 'text', text: JSON.stringify(db.getUser(id)) }] };\n});\n\n@workspace — תכתבי Tool חדש באותו סגנון שמקבל path ומחזיר את רשימת הקבצים",
       response: "Copilot תקרא את ה-server הקיים, תבין את המבנה ותכתוב Tool חדש שמשתלב בצורה עקבית עם הקוד.",
-      benefit: "הרחבת MCP עם AI שמכיר את הקוד שלך."
+      benefit: "דוגמה עובדת מהקוד שלך = AI ממשיך באותו סגנון בדיוק."
     }
   },
   docker_run: {
@@ -166,9 +166,9 @@ export const scenarios = {
       drawback: "היא לא תדע איך למצוא מה תופס את הפורט במחשב שלה."
     },
     good: {
-      prompt: "@workspace תסתכלי על ה-Dockerfile וה-docker-compose שלי — איזה פורט מוגדר ואיך אני יכולה לשנות אותו בלי לשבור כלום",
-      response: "Copilot תקרא את ה-Dockerfile, תזהה את PORT שמוגדר ותציע שינוי port mapping מדויק עם הסבר.",
-      benefit: "תיקון Docker config עם הבנה של הפרויקט."
+      prompt: "הרצתי docker-compose up ומקבלת:\n\nError: Bind for 0.0.0.0:3000 failed: port is already allocated\n\nכבר הרצתי lsof -i :3000 וראיתי שהפורט תפוס ע\"י node (PID 12345).\n\n@workspace — תסתכלי על ה-Dockerfile וה-docker-compose שלי. אני רוצה לשנות את הפורט ל-3001 — מה צריך לעדכן בכל הקבצים כדי שלא ישבר?",
+      response: "Copilot תקרא את כל קבצי ה-config, תזהה כל מקום שמפנה לפורט 3000 ותציע שינוי מסונכרן בכולם.",
+      benefit: "מה כבר בדקת + שאלה ממוקדת = תיקון בלי ניסוי וטעייה."
     }
   },
   debugging: {
@@ -179,9 +179,9 @@ export const scenarios = {
       drawback: "היא תוסיף לוג אחד ולא תבין את כל השרשרת של המידע."
     },
     good: {
-      prompt: "סמנתי את הפונקציה שמחזירה undefined. @workspace תציעי איפה לשים Breakpoint ותסבירי איך לעקוב אחרי המשתנה ב-VS Code Debugger",
-      response: "Copilot תזהה את הפונקציה, תציע היכן לשים Breakpoint ותסביר איך לראות את ערך המשתנה שלב אחרי שלב.",
-      benefit: "Debugging מקצועי עם כלי ה-IDE — לא רק console.log."
+      prompt: "הפונקציה getTotal מחזירה undefined. הוספתי כמה לוגים:\n\nconsole.log('items:', items)  // → [{price: 10}, {price: 20}]\nconsole.log('result:', result) // → undefined\n\nהנה הפונקציה עצמה (סימנתי אותה).\nנראה שהמידע נכנס תקין אבל התוצאה ריקה.\n\n@workspace — למה result יוצא undefined? תסבירי מה קורה שלב אחרי שלב ותציעי Breakpoint שיעזור",
+      response: "Copilot תזהה שהפונקציה אסינכרונית וחסר await, תסביר את ה-flow ותציע Breakpoint מדויק.",
+      benefit: "לוגים שכבר הרצת + הקוד = AI לא צריך לנחש."
     }
   },
   api_design: {
@@ -192,9 +192,9 @@ export const scenarios = {
       drawback: "היא תשלח רשימה מבולגנת בלי שמות שדות ברורים."
     },
     good: {
-      prompt: "@workspace תסתכלי על ה-POST endpoint בשרת ועל ה-fetch ב-Frontend — תבדקי שמבנה ה-JSON תואם משני הצדדים",
-      response: "Copilot תשווה בין ה-Backend לה-Frontend, תמצא אי-התאמות בשמות השדות ותציע תיקון מסונכרן.",
-      benefit: "בדיקת consistency בין Client לServer ברגע."
+      prompt: "ה-Frontend שולח POST עם הגוף הזה:\n{ products: [{ name: \"Chair\", price: 100 }] }\n\nאבל השרת מחזיר 400 עם:\n{ error: \"items is required\" }\n\nנראה שהשרת מצפה לשדה 'items' ולא 'products'.\n@workspace — תשווי את ה-POST endpoint בשרת עם ה-fetch ב-Frontend ותתקני את אי-ההתאמה",
+      response: "Copilot תשווה בין ה-Backend לה-Frontend, תמצא שהשרת מצפה ל-items והלקוח שולח products — ותציע תיקון מסונכרן.",
+      benefit: "Request + Response מודבקים = AI רואה את הפער מיד."
     }
   },
   ide_blind_accept: {
@@ -205,9 +205,9 @@ export const scenarios = {
       drawback: "Undo לא תמיד עובד אחרי שמירה — וגם אז, היא לא לומדת למה זה נשבר."
     },
     good: {
-      prompt: "Copilot הציע שינוי ב-X. לפני שאני לוחצת Accept: 'תסבירי מה השינוי הזה עושה ואיך הוא משפיע על שאר הקוד'",
-      response: "Copilot יסביר כל שורה שהשתנתה, למה היא נכתבה כך ומה ההשפעה על הפרויקט — ואז תחליטי אם לקבל.",
-      benefit: "Accept מושכל = למידה אמיתית, לא רק העתקה."
+      prompt: "Copilot הציע לשנות את fetchUsers מ-async/await לשימוש ב-.then().\nלפני שאני לוחצת Accept:\n\nהנה הקוד הנוכחי שעובד:\nasync function fetchUsers() {\n  const res = await fetch('/api/users');\n  return res.json();\n}\n\nתסבירי — מה ההבדל בין שתי הגישות? האם השינוי ישפיע על הקוד שקורא לפונקציה הזו?",
+      response: "Copilot יסביר את ההבדל, יראה שקוד אחר ב-codebase משתמש ב-await על fetchUsers ולכן שינוי ל-.then() ישבור אותם.",
+      benefit: "שואלת לפני Accept = למידה אמיתית + מונעת באגים."
     }
   },
   ide_refactor: {
@@ -218,9 +218,9 @@ export const scenarios = {
       drawback: "Refactor ללא הנחיות = שינוי אקראי שאולי שובר לוגיקה קיימת."
     },
     good: {
-      prompt: "סמנתי את הפונקציה. @workspace תשפרי את הקריאות בלי לשנות את הלוגיקה — ותסבירי כל שינוי שעשית ולמה",
-      response: "Copilot תעשה refactor ממוקד עם הסבר לכל שינוי: שמות משתנים, חלוקה לפונקציות, הסרת כפילויות.",
-      benefit: "קוד נקי עם שליטה מלאה על מה שהשתנה."
+      prompt: "סמנתי את הפונקציה processOrder (50 שורות). הבעיות שאני רואה:\n1. שמות משתנים לא ברורים (a, b, tmp)\n2. יש 3 בלוקים של if-else שנראים דומים\n3. חלקים חוזרים על עצמם\n\n@workspace — תשפרי קריאות בלי לשנות לוגיקה. תסבירי כל שינוי שעשית ולמה, ותוודאי שהפלט זהה",
+      response: "Copilot תעשה refactor ממוקד: תשנה שמות ל-meaningful, תאחד את הכפילויות לפונקציה, תשאיר לוגיקה זהה — עם הסבר לכל שינוי.",
+      benefit: "את מכוונת את ה-refactor → הוא לא משנה מה שלא ביקשת."
     }
   },
   ide_context: {
@@ -231,9 +231,9 @@ export const scenarios = {
       drawback: "בלי הקשר גם ב-IDE הוא מנחש בחושך — בדיוק כמו צ'אט חיצוני."
     },
     good: {
-      prompt: "סמני את הקוד הספציפי ← פתחי Inline Chat ← 'למה הפונקציה הזו מחזירה ערך שגוי כשה-input ריק?'",
-      response: "עם הסימון Copilot רואה בדיוק את הקוד הרלוונטי ונותן תשובה מדויקת — לא תיאוריה כללית.",
-      benefit: "שימוש נכון בכוח האמיתי של כלי IDE."
+      prompt: "סמנתי את שורות 14-22 ב-CartService.js.\nפתחתי Inline Chat:\n\n'הפונקציה calcDiscount מחזירה 0 כשיש 3 פריטים בעגלה, למרות שלפי הלוגיקה צריכה להחזיר 10%.\nהנה דוגמת input: items = [{price:50}, {price:30}, {price:20}].\nלמה?'",
+      response: "עם הסימון + דוגמת input Copilot רואה בדיוק מה לא עובד, מריץ את הלוגיקה בראש ומוצא את הבאג.",
+      benefit: "סימון + דוגמה + שאלה ממוקדת = הכוח האמיתי של IDE."
     }
   }
 };

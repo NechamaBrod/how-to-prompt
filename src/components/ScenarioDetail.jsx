@@ -46,7 +46,7 @@ const GoodSection = ({ good }) => (
           <p className="text-[11px] font-bold text-indigo-400/90 mb-2.5 uppercase tracking-wider px-1">
             הפרומפט ב-Copilot / Claude Code:
           </p>
-          <div className="flex-1 bg-slate-950/90 p-5 rounded-2xl border border-indigo-900/40 text-blue-50 text-[15px] leading-[1.8] font-medium shadow-2xl overflow-y-auto custom-scrollbar">
+          <div className="flex-1 bg-slate-950/90 p-5 rounded-2xl border border-indigo-900/40 text-blue-50 text-[13px] leading-[1.8] font-medium shadow-2xl overflow-y-auto custom-scrollbar whitespace-pre-wrap">
             "{good.prompt}"
           </div>
         </div>
