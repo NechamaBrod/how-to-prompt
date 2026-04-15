@@ -10,7 +10,7 @@ export const scenarios = {
       drawback: "הודעת שגיאה בלבד גורמת ל-AI לנחש. הוא לא יודע מאיפה הנתון מגיע."
     },
     good: {
-      prompt: "סמנתי את השורה שקורסת. הנה ה-Stack Trace מהטרמינל:\n\njava.lang.NullPointerException: Cannot invoke \"String.length()\"\n  at UserService.validate(UserService.java:42)\n  at MainApp.run(MainApp.java:18)\n\n@workspace — למה name יכול להיות null בשורה 42? תעקבי מאיפה הוא מגיע בפרויקט ותראי לי את כל השרשרת",
+      prompt: "סמנתי את השורה שקורסת. הנה ה-Stack Trace מהטרמינל:\n\njava.lang.NullPointerException: Cannot invoke \"String.length()\"\n  at UserService.validate(UserService.java:42)\n  at MainApp.run(MainApp.java:18)\n\n@workspace — למה name יכול להיות null בשורה 42? תעקוב מאיפה הוא מגיע בפרויקט ותראה לי את כל השרשרת",
       response: "Copilot יסרוק את כל הפרויקט, יראה את כל המקומות ש-name מקבל ערך ויצביע על הנקודה שבה הוא לא אותחל.",
       benefit: "Stack Trace + @workspace = אבחון מדויק פי כמה."
     }
@@ -23,7 +23,7 @@ export const scenarios = {
       drawback: "היא תתחיל לשים אנוטציות בכל מקום בלי להבין איזו מחלקה באמת חסרה."
     },
     good: {
-      prompt: "הנה הלוג האדום שקפץ בקונסול כשהרצתי את השרת:\n\nError creating bean 'userController': Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.app.service.UserService'\n\n@workspace תסרקי את הפרויקט — UserService קיימת בקובץ UserService.java אבל Spring לא מזהה אותה. מה חסר?",
+      prompt: "הנה הלוג האדום שקפץ בקונסול כשהרצתי את השרת:\n\nError creating bean 'userController': Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.app.service.UserService'\n\n@workspace תסרוק את הפרויקט — UserService קיימת בקובץ UserService.java אבל Spring לא מזהה אותה. מה חסר?",
       response: "Copilot יסרוק את כל המחלקות, ימצא ש-UserService חסרת @Service ויסביר למה Spring לא מזהה אותה.",
       benefit: "לוג מלא + שם הקובץ = אבחון תוך שניות."
     }
@@ -36,7 +36,7 @@ export const scenarios = {
       drawback: "זה לא יעזור אם היא בתוך Virtual Env ב-VS Code והטרמינל בחוץ."
     },
     good: {
-      prompt: "ב-VS Code מופיע קו אדום מתחת ל-import requests, וכשאני מריצה מהטרמינל:\n\nModuleNotFoundError: No module named 'requests'\n\nכבר עשיתי pip install requests והוא אמר שזה מותקן.\nה-interpreter שנבחר למטה ב-VS Code הוא Python 3.11.4.\n@workspace — תבדקי למה זה לא מוצא את הספרייה. אולי venv לא מסונכרן עם ה-interpreter?",
+      prompt: "ב-VS Code מופיע קו אדום מתחת ל-import requests, וכשאני מריצה מהטרמינל:\n\nModuleNotFoundError: No module named 'requests'\n\nכבר עשיתי pip install requests והוא אמר שזה מותקן.\nה-interpreter שנבחר למטה ב-VS Code הוא Python 3.11.4.\n@workspace — תבדוק למה זה לא מוצא את הספרייה. אולי venv לא מסונכרן עם ה-interpreter?",
       response: "Copilot יזהה את הסביבה הפעילה, יבין שיש קונפליקט בין ה-interpreter לvenv ויסביר איך לתקן ב-2 לחיצות.",
       benefit: "פירוט מה כבר ניסית = AI לא חוזר על עצות שלא עבדו."
     }
@@ -49,7 +49,7 @@ export const scenarios = {
       drawback: "פתרון 'טכני' שלא מסביר למה זה קורה ואיך לעשות את זה בטוח."
     },
     good: {
-      prompt: "מקבלת את השגיאה הזו ב-DevTools Console:\n\nAccess to fetch at 'http://localhost:5000/api/users' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header\n\nה-Frontend רץ על 3000, השרת על 5000.\n@workspace — תראי לי את הגדרות השרת הנוכחיות ותוסיפי CORS middleware שיעבוד רק מהדומיין שלי ולא '*'",
+      prompt: "מקבלת את השגיאה הזו ב-DevTools Console:\n\nAccess to fetch at 'http://localhost:5000/api/users' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header\n\nה-Frontend רץ על 3000, השרת על 5000.\n@workspace — תראה לי את הגדרות השרת הנוכחיות ותוסיף CORS middleware שיעבוד רק מהדומיין שלי ולא '*'",
       response: "Copilot יקרא את קוד השרת, יראה שחסר הגדרת CORS ויוסיף את הקוד המדויק המותאם לפרויקט שלך.",
       benefit: "הודעת שגיאה מלאה מ-DevTools = פתרון מדויק וגם מאובטח."
     }
@@ -62,7 +62,7 @@ export const scenarios = {
       drawback: "תשובה קרה שלא עוזרת לג'וניורית להבין איפה הקובץ שצריך לערוך."
     },
     good: {
-      prompt: "יש קו אדום ב-pom.xml בשורה הזו:\n\n<dependency>\n  <groupId>org.json</groupId>\n  <artifactId>json</artifactId>\n  <version>20230227</version>\n</dependency>\n\nהשגיאה: Could not resolve dependencies.\n@workspace — תבדקי מה הגרסה הנכונה שקיימת ב-Maven Central ותתקני לי את ה-pom.xml",
+      prompt: "יש קו אדום ב-pom.xml בשורה הזו:\n\n<dependency>\n  <groupId>org.json</groupId>\n  <artifactId>json</artifactId>\n  <version>20230227</version>\n</dependency>\n\nהשגיאה: Could not resolve dependencies.\n@workspace — תבדוק מה הגרסה הנכונה שקיימת ב-Maven Central ותתקן לי את ה-pom.xml",
       response: "Copilot יזהה שהגרסה לא קיימת ב-Maven Central, יציע גרסה תקינה ויסביר איך לבצע Reload.",
       benefit: "העתקת הקוד הבעייתי + השגיאה = תיקון כירורגי."
     }
@@ -88,7 +88,7 @@ export const scenarios = {
       drawback: "היא לא תדע איך 'להדביק' את הטוקן בצורה שהשרת מצפה לה."
     },
     good: {
-      prompt: "אני שולחת בקשה מ-Postman ומקבלת 401.\nהנה ה-Headers שאני שולחת:\nAuthorization: Bearer eyJhbGciOiJIUzI1...\n\nוהנה התשובה מהשרת:\n{ \"error\": \"jwt malformed\" }\n\n@workspace — תבדקי את ה-auth middleware שלי. אני כן שולחת Token, אז למה הוא לא מתקבל?",
+      prompt: "אני שולחת בקשה מ-Postman ומקבלת 401.\nהנה ה-Headers שאני שולחת:\nAuthorization: Bearer eyJhbGciOiJIUzI1...\n\nוהנה התשובה מהשרת:\n{ \"error\": \"jwt malformed\" }\n\n@workspace — תבדוק את ה-auth middleware שלי. אני כן שולחת Token, אז למה הוא לא מתקבל?",
       response: "Copilot יקרא את ה-middleware, ימצא שהוא מחפש 'Bearer token' אבל הקוד לא מפצל נכון — ויתקן.",
       benefit: "Headers + תשובת שרת מודבקים = AI מבין את שני הצדדים."
     }
@@ -101,7 +101,7 @@ export const scenarios = {
       drawback: "מפחיד. היא עלולה למחוק קוד חשוב בלי להבין מה היא עושה."
     },
     good: {
-      prompt: "אחרי git merge נוצר conflict ב-App.js. הנה מה שאני רואה בקובץ:\n\n<<<<<<< HEAD\n<Header title=\"Dashboard\" />\n=======\n<Header title=\"לוח בקרה\" showLogo={true} />\n>>>>>>> feature/hebrew\n\nאני רוצה גם את הלוגו וגם את השם בעברית.\n@workspace — תעזרי לי למזג את שני הצדדים בצורה שמשלבת את שניהם",
+      prompt: "אחרי git merge נוצר conflict ב-App.js. הנה מה שאני רואה בקובץ:\n\n<<<<<<< HEAD\n<Header title=\"Dashboard\" />\n=======\n<Header title=\"לוח בקרה\" showLogo={true} />\n>>>>>>> feature/hebrew\n\nאני רוצה גם את הלוגו וגם את השם בעברית.\n@workspace — תעזור לי למזג את שני הצדדים בצורה שמשלבת את שניהם",
       response: "Copilot יקרא את שני הצדדים, יבין שאת רוצה את שני השינויים ויכתוב שורה ממוזגת שכוללת גם עברית וגם לוגו.",
       benefit: "הדבקת הקונפליקט + מה שאת רוצה = מיזוג חכם."
     }
@@ -127,7 +127,7 @@ export const scenarios = {
       drawback: "היא תהפוך את כל האתר שלה ל-Client Side ותאבד את היתרון של Next.js."
     },
     good: {
-      prompt: "מקבלת שגיאה אדומה בדפדפן:\nError: useState only works in Client Components.\n\nהקובץ הוא app/dashboard/page.tsx — הוא Server Component שמושך data מ-DB אבל גם מציג טאבים אינטראקטיביים עם useState.\n\n@workspace — האם כל הקובץ צריך 'use client' או שעדיף לפצל? תציעי ארכיטקטורה שמשאירה את ה-data fetching בצד שרת",
+      prompt: "מקבלת שגיאה אדומה בדפדפן:\nError: useState only works in Client Components.\n\nהקובץ הוא app/dashboard/page.tsx — הוא Server Component שמושך data מ-DB אבל גם מציג טאבים אינטראקטיביים עם useState.\n\n@workspace — האם כל הקובץ צריך 'use client' או שעדיף לפצל? תציע ארכיטקטורה שמשאירה את ה-data fetching בצד שרת",
       response: "Copilot יראה את הקומפוננטה, יציע לחלץ רק את הטאבים לקובץ Client נפרד — ולהשאיר את ה-data fetching ב-Server.",
       benefit: "הסבר מה הקובץ עושה → AI מציע ארכיטקטורה, לא תיקון עיוור."
     }
@@ -140,7 +140,7 @@ export const scenarios = {
       drawback: "תשובה גנרית. לפעמים זה דווקא יהרוס לה את שאר העיצוב בדף."
     },
     good: {
-      prompt: "צילום מסך מצורף — הטקסט צמוד לשמאל למרות שהגדרתי מרכוז.\n\nהנה ה-CSS הנוכחי של הקונטיינר:\n.card { display: flex; width: 100%; }\n.card-text { margin: auto; }\n\nואבא שלו:\n.grid { display: grid; grid-template-columns: 1fr 1fr; }\n\n@workspace — למה ה-text-align לא עובד? תתקני בלי לשבור את ה-Grid של שאר הכרטיסיות",
+      prompt: "צילום מסך מצורף — הטקסט צמוד לשמאל למרות שהגדרתי מרכוז.\n\nהנה ה-CSS הנוכחי של הקונטיינר:\n.card { display: flex; width: 100%; }\n.card-text { margin: auto; }\n\nואבא שלו:\n.grid { display: grid; grid-template-columns: 1fr 1fr; }\n\n@workspace — למה ה-text-align לא עובד? תתקן בלי לשבור את ה-Grid של שאר הכרטיסיות",
       response: "Copilot יראה את ה-CSS של הdiv וסביבתו, יזהה ש-flex דורס את ה-margin: auto ויציע תיקון ממוקד.",
       benefit: "צילום מסך + CSS מודבק = תיקון שלא שובר כלום."
     }
@@ -153,8 +153,8 @@ export const scenarios = {
       drawback: "זה נשמע כמו משימה בלתי אפשרית לג'וניורית."
     },
     good: {
-      prompt: "יש לי MCP server שעובד עם 2 Tools קיימים (ראי את index.ts).\nאני רוצה להוסיף Tool שלישי שמחזיר רשימת קבצים מתיקייה.\n\nהנה דוגמה ל-Tool קיים שעובד אצלי:\n\nserver.tool('get-user', { id: z.string() }, async ({ id }) => {\n  return { content: [{ type: 'text', text: JSON.stringify(db.getUser(id)) }] };\n});\n\n@workspace — תכתבי Tool חדש באותו סגנון שמקבל path ומחזיר את רשימת הקבצים",
-      response: "Copilot תקרא את ה-server הקיים, תבין את המבנה ותכתוב Tool חדש שמשתלב בצורה עקבית עם הקוד.",
+      prompt: "יש לי MCP server שעובד עם 2 Tools קיימים (ראה את index.ts).\nאני רוצה להוסיף Tool שלישי שמחזיר רשימת קבצים מתיקייה.\n\nהנה דוגמה ל-Tool קיים שעובד אצלי:\n\nserver.tool('get-user', { id: z.string() }, async ({ id }) => {\n  return { content: [{ type: 'text', text: JSON.stringify(db.getUser(id)) }] };\n});\n\n@workspace — תכתוב Tool חדש באותו סגנון שמקבל path ומחזיר את רשימת הקבצים",
+      response: "Copilot יקרא את ה-server הקיים, יבין את המבנה ויכתוב Tool חדש שמשתלב בצורה עקבית עם הקוד.",
       benefit: "דוגמה עובדת מהקוד שלך = AI ממשיך באותו סגנון בדיוק."
     }
   },
@@ -166,8 +166,8 @@ export const scenarios = {
       drawback: "היא לא תדע איך למצוא מה תופס את הפורט במחשב שלה."
     },
     good: {
-      prompt: "הרצתי docker-compose up ומקבלת:\n\nError: Bind for 0.0.0.0:3000 failed: port is already allocated\n\nכבר הרצתי lsof -i :3000 וראיתי שהפורט תפוס ע\"י node (PID 12345).\n\n@workspace — תסתכלי על ה-Dockerfile וה-docker-compose שלי. אני רוצה לשנות את הפורט ל-3001 — מה צריך לעדכן בכל הקבצים כדי שלא ישבר?",
-      response: "Copilot תקרא את כל קבצי ה-config, תזהה כל מקום שמפנה לפורט 3000 ותציע שינוי מסונכרן בכולם.",
+      prompt: "הרצתי docker-compose up ומקבלת:\n\nError: Bind for 0.0.0.0:3000 failed: port is already allocated\n\nכבר הרצתי lsof -i :3000 וראיתי שהפורט תפוס ע\"י node (PID 12345).\n\n@workspace — תסתכל על ה-Dockerfile וה-docker-compose שלי. אני רוצה לשנות את הפורט ל-3001 — מה צריך לעדכן בכל הקבצים כדי שלא ישבר?",
+      response: "Copilot יקרא את כל קבצי ה-config, יזהה כל מקום שמפנה לפורט 3000 ויציע שינוי מסונכרן בכולם.",
       benefit: "מה כבר בדקת + שאלה ממוקדת = תיקון בלי ניסוי וטעייה."
     }
   },
@@ -179,8 +179,8 @@ export const scenarios = {
       drawback: "היא תוסיף לוג אחד ולא תבין את כל השרשרת של המידע."
     },
     good: {
-      prompt: "הפונקציה getTotal מחזירה undefined. הוספתי כמה לוגים:\n\nconsole.log('items:', items)  // → [{price: 10}, {price: 20}]\nconsole.log('result:', result) // → undefined\n\nהנה הפונקציה עצמה (סימנתי אותה).\nנראה שהמידע נכנס תקין אבל התוצאה ריקה.\n\n@workspace — למה result יוצא undefined? תסבירי מה קורה שלב אחרי שלב ותציעי Breakpoint שיעזור",
-      response: "Copilot תזהה שהפונקציה אסינכרונית וחסר await, תסביר את ה-flow ותציע Breakpoint מדויק.",
+      prompt: "הפונקציה getTotal מחזירה undefined. הוספתי כמה לוגים:\n\nconsole.log('items:', items)  // → [{price: 10}, {price: 20}]\nconsole.log('result:', result) // → undefined\n\nהנה הפונקציה עצמה (סימנתי אותה).\nנראה שהמידע נכנס תקין אבל התוצאה ריקה.\n\n@workspace — למה result יוצא undefined? תסביר מה קורה שלב אחרי שלב ותציע Breakpoint שיעזור",
+      response: "Copilot יזהה שהפונקציה אסינכרונית וחסר await, יסביר את ה-flow ויציע Breakpoint מדויק.",
       benefit: "לוגים שכבר הרצת + הקוד = AI לא צריך לנחש."
     }
   },
@@ -192,8 +192,8 @@ export const scenarios = {
       drawback: "היא תשלח רשימה מבולגנת בלי שמות שדות ברורים."
     },
     good: {
-      prompt: "ה-Frontend שולח POST עם הגוף הזה:\n{ products: [{ name: \"Chair\", price: 100 }] }\n\nאבל השרת מחזיר 400 עם:\n{ error: \"items is required\" }\n\nנראה שהשרת מצפה לשדה 'items' ולא 'products'.\n@workspace — תשווי את ה-POST endpoint בשרת עם ה-fetch ב-Frontend ותתקני את אי-ההתאמה",
-      response: "Copilot תשווה בין ה-Backend לה-Frontend, תמצא שהשרת מצפה ל-items והלקוח שולח products — ותציע תיקון מסונכרן.",
+      prompt: "ה-Frontend שולח POST עם הגוף הזה:\n{ products: [{ name: \"Chair\", price: 100 }] }\n\nאבל השרת מחזיר 400 עם:\n{ error: \"items is required\" }\n\nנראה שהשרת מצפה לשדה 'items' ולא 'products'.\n@workspace — תשווה את ה-POST endpoint בשרת עם ה-fetch ב-Frontend ותתקן את אי-ההתאמה",
+      response: "Copilot ישווה בין ה-Backend לה-Frontend, ימצא שהשרת מצפה ל-items והלקוח שולח products — ויציע תיקון מסונכרן.",
       benefit: "Request + Response מודבקים = AI רואה את הפער מיד."
     }
   },
@@ -205,7 +205,7 @@ export const scenarios = {
       drawback: "Undo לא תמיד עובד אחרי שמירה — וגם אז, היא לא לומדת למה זה נשבר."
     },
     good: {
-      prompt: "Copilot הציע לשנות את fetchUsers מ-async/await לשימוש ב-.then().\nלפני שאני לוחצת Accept:\n\nהנה הקוד הנוכחי שעובד:\nasync function fetchUsers() {\n  const res = await fetch('/api/users');\n  return res.json();\n}\n\nתסבירי — מה ההבדל בין שתי הגישות? האם השינוי ישפיע על הקוד שקורא לפונקציה הזו?",
+      prompt: "Copilot הציע לשנות את fetchUsers מ-async/await לשימוש ב-.then().\nלפני שאני לוחצת Accept:\n\nהנה הקוד הנוכחי שעובד:\nasync function fetchUsers() {\n  const res = await fetch('/api/users');\n  return res.json();\n}\n\nתסביר — מה ההבדל בין שתי הגישות? האם השינוי ישפיע על הקוד שקורא לפונקציה הזו?",
       response: "Copilot יסביר את ההבדל, יראה שקוד אחר ב-codebase משתמש ב-await על fetchUsers ולכן שינוי ל-.then() ישבור אותם.",
       benefit: "שואלת לפני Accept = למידה אמיתית + מונעת באגים."
     }
@@ -218,8 +218,8 @@ export const scenarios = {
       drawback: "Refactor ללא הנחיות = שינוי אקראי שאולי שובר לוגיקה קיימת."
     },
     good: {
-      prompt: "סמנתי את הפונקציה processOrder (50 שורות). הבעיות שאני רואה:\n1. שמות משתנים לא ברורים (a, b, tmp)\n2. יש 3 בלוקים של if-else שנראים דומים\n3. חלקים חוזרים על עצמם\n\n@workspace — תשפרי קריאות בלי לשנות לוגיקה. תסבירי כל שינוי שעשית ולמה, ותוודאי שהפלט זהה",
-      response: "Copilot תעשה refactor ממוקד: תשנה שמות ל-meaningful, תאחד את הכפילויות לפונקציה, תשאיר לוגיקה זהה — עם הסבר לכל שינוי.",
+      prompt: "סמנתי את הפונקציה processOrder (50 שורות). הבעיות שאני רואה:\n1. שמות משתנים לא ברורים (a, b, tmp)\n2. יש 3 בלוקים של if-else שנראים דומים\n3. חלקים חוזרים על עצמם\n\n@workspace — תשפר קריאות בלי לשנות לוגיקה. תסביר כל שינוי שעשית ולמה, ותוודא שהפלט זהה",
+      response: "Copilot יעשה refactor ממוקד: ישנה שמות ל-meaningful, יאחד את הכפילויות לפונקציה, ישאיר לוגיקה זהה — עם הסבר לכל שינוי.",
       benefit: "את מכוונת את ה-refactor → הוא לא משנה מה שלא ביקשת."
     }
   },
