@@ -26,16 +26,16 @@ const RecipeStep = ({ step, index }) => {
           {index}
         </div>
 
-        {/* Icon */}
-        <div className="flex items-center">
+        {/* Icon + Title */}
+        <div className="flex items-center gap-2">
           {IconComponent && (
-            <IconComponent className={`w-6 h-6 ${step.iconColor}`} aria-hidden="true" />
+            <IconComponent className={`w-6 h-6 ${step.iconColor} shrink-0`} aria-hidden="true" />
           )}
+          <h4 className="text-[15px] font-black text-slate-100">{step.title}</h4>
         </div>
 
         {/* Content */}
         <div>
-          <h4 className="text-[15px] font-black text-slate-100 mb-1">{step.title}</h4>
           <p className="text-[12px] text-slate-400 leading-relaxed">
             {step.description}
             {step.highlights.map((part, i) => {
